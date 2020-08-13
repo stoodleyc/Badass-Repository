@@ -1,4 +1,4 @@
-#thing that make my code work
+#thing that makes my code work
 from random import randint
 Hand = 0
 DealerHand = 0
@@ -37,6 +37,8 @@ def player_turn():
 def round():
     global DealerHand
     global Hand
+    global Stand
+    Stand = 0
     Hand = randint(2,20)
     DealerHand = randint(2,20)
     player_turn()
@@ -47,7 +49,9 @@ def hit():
     tell_hand()
 
 def stand():
-    print("bruh")
+    global Stand
+    Stand = 1
+    print("stand")
 
 def Game():
     score = 0
@@ -79,6 +83,5 @@ elif start == "Help":
 elif start == "HELP":
     help()
 
-#starting
-# the game
+#starting the game
 Game()
