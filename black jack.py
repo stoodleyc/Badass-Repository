@@ -1,3 +1,5 @@
+#I apoligise in advance for anyone trying to read my code
+
 #thing that makes my code work
 from random import randint
 Hand = 0
@@ -33,11 +35,15 @@ def player_turn():
         print (unknown)
         player_turn()
 
+def dealer_turn():
+
 
 def round():
     global DealerHand
     global Hand
     global Stand
+    print('''game start!
+    ''')
     Stand = 0
     Hand = randint(2,20)
     DealerHand = randint(2,20)
@@ -47,13 +53,17 @@ def hit():
     global Hand
     Hand = Hand + randint(1,10)
     tell_hand()
+    if Hand > 21:
+        lose()
+    else:
 
 def stand():
     global Stand
     Stand = 1
-    print("stand")
+    print("you are standing")
 
 def Game():
+    global score
     score = 0
     round()
 
@@ -62,6 +72,14 @@ def help():
     print('''
     type anything to start!''')
     input()
+
+def lose():
+    print ("shame you lose!")
+
+def win():
+    global score
+    score = score + 1
+    print("good job you've won a whole {} times in a row".format(score))
 
 #start screen
 print('''▀█████████▄   ▄█          ▄████████  ▄████████    ▄█   ▄█▄      ▄█    ▄████████  ▄████████    ▄█   ▄█▄ 
