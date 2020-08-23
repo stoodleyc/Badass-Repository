@@ -1,4 +1,4 @@
-#I apoligise in advance for anyone trying to read my code
+#I apologise in advance for anyone trying to read my code
 
 #thing that makes my code work
 from random import randint
@@ -19,23 +19,18 @@ def player_turn():
     tell_hand()
     print("would you like to hit or stand?")
     playermove=input()
-    if playermove == "hit":
+    if playermove.lower() == "hit":
         hit()
-    elif playermove == "Hit":
-        hit()
-    elif playermove == "HIT":
-        hit()
-    elif playermove == "stand":
-        stand()
-    elif playermove == "Stand":
-        stand()
-    elif playermove == "STAND":
+    elif playermove.lower() == "stand":
         stand()
     else:
         print (unknown)
         player_turn()
 
 def dealer_turn():
+    print('''
+    ''')
+    print ("dealer's turn!")
 
 
 def round():
@@ -56,11 +51,14 @@ def hit():
     if Hand > 21:
         lose()
     else:
+        input('''type anything to continue.
+        ''')
+        dealer_turn()
 
 def stand():
     global Stand
     Stand = 1
-    print("you are standing")
+    print("you are standing on {}.".format(Hand))
 
 def Game():
     global score
@@ -94,11 +92,7 @@ print('''▀█████████▄   ▄█          ▄█████�
 hello there, welcome to blackjack.
 for help type help anything else will just start the game''')
 start=input()
-if start == "help":
-    help()
-elif start == "Help":
-    help()
-elif start == "HELP":
+if start.lower() == "help":
     help()
 
 #starting the game
