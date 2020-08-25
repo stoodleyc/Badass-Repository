@@ -2,8 +2,6 @@
 
 #thing that makes my code work
 from random import randint
-Hand = 0
-DealerHand = 0
 unknown = ('''
 sorry I don't recognize that answer please try again
 ''')
@@ -15,19 +13,26 @@ def tell_hand():
 
 def player_turn():
     global unknown
-    print("it is now your turn!")
-    tell_hand()
-    print("would you like to hit or stand?")
-    playermove=input()
-    if playermove.lower() == "hit":
-        hit()
-    elif playermove.lower() == "stand":
+    global Stand
+    if stand == 1:
         stand()
     else:
-        print (unknown)
-        player_turn()
+        print("it is now your turn!")
+        tell_hand()
+        print("would you like to hit or stand?")
+        playermove=input()
+        if playermove.lower() == "hit":
+            hit()
+        elif playermove.lower() == "stand":
+            stand()
+        else:
+            print (unknown)
+            player_turn()
 
 def dealer_turn():
+    global dealer_stand
+    if dealer_stand == 1:
+        print ("the deala be standin")
     print('''
     ''')
     print ("dealer's turn!")
@@ -37,9 +42,11 @@ def round():
     global DealerHand
     global Hand
     global Stand
+    global dealer_stand
     print('''game start!
     ''')
     Stand = 0
+    dealer_stand = 0
     Hand = randint(2,20)
     DealerHand = randint(2,20)
     player_turn()
@@ -59,6 +66,7 @@ def stand():
     global Stand
     Stand = 1
     print("you are standing on {}.".format(Hand))
+    dealer_turn()
 
 def Game():
     global score
