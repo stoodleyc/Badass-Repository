@@ -1,16 +1,54 @@
-#I apologise in advance for anyone trying to read my code
-
 #thing that makes my code work
 from random import randint
 unknown = ('''
 sorry I don't recognize that answer please try again
 ''')
 
-#functions and stuff
+#functions
+#minor functions that aren't very important
 def tell_hand():
     global Hand
     print("your hand is... {}!".format(Hand))
 
+def help():
+    print("[I can't be bothered typing an explanation right now so I'll do it later]")
+    print('''
+    type anything to start!''')
+    input()
+
+#the moves
+def hit():
+    global Hand
+    Hand = Hand + randint(1,10)
+    tell_hand()
+    if Hand > 21:
+        lose()
+    else:
+        input('''type anything to continue.
+        ''')
+        dealer_turn()
+
+def stand():
+    global Stand
+    Stand = 1
+    print("you are standing on {}.".format(Hand))
+    dealer_turn()
+
+def DealerHit():
+    global DealerHand
+    DealerHand = DealerHand + randint(1,10)
+    print("Dealer hits!")
+    if DealerHand> 21:
+        win()
+    else:
+        input('''type anything to continue.
+        ''')
+        player_turn()
+
+def DealerStand():
+    print("nice")
+
+#the turns
 def player_turn():
     global unknown
     global Stand
@@ -31,13 +69,18 @@ def player_turn():
 
 def dealer_turn():
     global dealer_stand
+    global DealerHand
     if dealer_stand == 1:
         print ("the deala be standin")
     print('''
     ''')
     print ("dealer's turn!")
+    if DealerHand < 17:
+        DealerHit()
+    else:
+        print("dealerstand")
 
-
+#the game states
 def round():
     global DealerHand
     global Hand
@@ -51,33 +94,10 @@ def round():
     DealerHand = randint(2,20)
     player_turn()
 
-def hit():
-    global Hand
-    Hand = Hand + randint(1,10)
-    tell_hand()
-    if Hand > 21:
-        lose()
-    else:
-        input('''type anything to continue.
-        ''')
-        dealer_turn()
-
-def stand():
-    global Stand
-    Stand = 1
-    print("you are standing on {}.".format(Hand))
-    dealer_turn()
-
 def Game():
     global score
     score = 0
     round()
-
-def help():
-    print("[I can't be bothered typing an explanation right now so I'll do it later]")
-    print('''
-    type anything to start!''')
-    input()
 
 def lose():
     print ("shame you lose!")
