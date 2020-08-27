@@ -5,15 +5,19 @@ sorry I don't recognize that answer please try again
 ''')
 
 #functions
-#minor functions that aren't very important
+#minor functions that are only functions for my covenience
 def tell_hand():
     global Hand
     print("your hand is... {}!".format(Hand))
 
+def Continue():
+    input('''
+    Press Enter to continue...''')
+
 def help():
     print("[I can't be bothered typing an explanation right now so I'll do it later]")
     print('''
-    type anything to start!''')
+    Press Enter to start...''')
     input()
 
 #the moves
@@ -24,8 +28,7 @@ def hit():
     if Hand > 21:
         lose()
     else:
-        input('''type anything to continue.
-        ''')
+        Continue()
         dealer_turn()
 
 def stand():
@@ -41,17 +44,31 @@ def DealerHit():
     if DealerHand> 21:
         win()
     else:
-        input('''type anything to continue.
-        ''')
+        Continue()
         player_turn()
 
 def DealerStand():
-    print("nice")
+    global Stand
+    global Hand
+    global DealerHand
+    print("The dealer is standing!")
+    Continue()
+    if Stand == 1:
+        if Hand > DealerHand:
+            win()
+        elif Hand < DealerHand:
+            lose()
+        elif Hand == DealerHand:
+            print("stuff")
+    else:
+        player_turn()
+
 
 #the turns
 def player_turn():
     global unknown
     global Stand
+    print("")
     if stand == 1:
         stand()
     else:
@@ -68,28 +85,22 @@ def player_turn():
             player_turn()
 
 def dealer_turn():
-    global dealer_stand
     global DealerHand
-    if dealer_stand == 1:
-        print ("the deala be standin")
-    print('''
-    ''')
+    print("")
     print ("dealer's turn!")
     if DealerHand < 17:
         DealerHit()
     else:
-        print("dealerstand")
+        DealerStand()
 
 #the game states
 def round():
     global DealerHand
     global Hand
     global Stand
-    global dealer_stand
     print('''game start!
     ''')
     Stand = 0
-    dealer_stand = 0
     Hand = randint(2,20)
     DealerHand = randint(2,20)
     player_turn()
@@ -105,7 +116,13 @@ def lose():
 def win():
     global score
     score = score + 1
-    print("good job you've won a whole {} times in a row".format(score))
+    print("good job you've won a whole {} times without losing".format(score))
+    input('''Press Enter to start round {}...
+    '''.format(score + 1))
+    round()
+
+def draw():
+    global score
 
 #start screen
 print('''▀█████████▄   ▄█          ▄████████  ▄████████    ▄█   ▄█▄      ▄█    ▄████████  ▄████████    ▄█   ▄█▄ 
