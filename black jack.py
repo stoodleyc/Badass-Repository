@@ -39,13 +39,18 @@ def stand():
 
 def DealerHit():
     global DealerHand
+    global Stand
     DealerHand = DealerHand + randint(1,10)
     print("Dealer hits!")
     if DealerHand> 21:
+        Continue()
         win()
     else:
         Continue()
-        player_turn()
+        if Stand == 1:
+            stand()
+        else:
+            player_turn()
 
 def DealerStand():
     global Stand
@@ -59,7 +64,7 @@ def DealerStand():
         elif Hand < DealerHand:
             lose()
         elif Hand == DealerHand:
-            print("stuff")
+            draw()
     else:
         player_turn()
 
@@ -98,8 +103,8 @@ def round():
     global DealerHand
     global Hand
     global Stand
-    print('''game start!
-    ''')
+    print('''round {} start!
+    '''.format(Round))
     Stand = 0
     Hand = randint(2,20)
     DealerHand = randint(2,20)
@@ -107,22 +112,39 @@ def round():
 
 def Game():
     global score
+    global Round
+    Round = 1
     score = 0
     round()
 
 def lose():
+    print("")
+    print("your hand was {}".format(Hand))
+    print("the dealers hand was {}".format(DealerHand))
     print ("shame you lose!")
 
 def win():
     global score
+    global Hand
+    global DealerHand
+    global Round
     score = score + 1
+    round = Round + 1
+    print("")
+    print("your hand was {}".format(Hand))
+    print("the dealers hand was {}".format(DealerHand))
+    print ("you won!")
     print("good job you've won a whole {} times without losing".format(score))
     input('''Press Enter to start round {}...
-    '''.format(score + 1))
+    '''.format(round))
     round()
 
 def draw():
+    global Round
     global score
+    global Hand
+    Round = Round + 1
+    print("you tied at {}".format(Hand))
 
 #start screen
 print('''▀█████████▄   ▄█          ▄████████  ▄████████    ▄█   ▄█▄      ▄█    ▄████████  ▄████████    ▄█   ▄█▄ 
