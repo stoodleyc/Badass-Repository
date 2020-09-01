@@ -129,14 +129,19 @@ def win():
     global DealerHand
     global Round
     score = score + 1
-    round = Round + 1
+    Round = Round + 1
     print("")
     print("your hand was {}".format(Hand))
     print("the dealers hand was {}".format(DealerHand))
-    print ("you won!")
-    print("good job you've won a whole {} times without losing".format(score))
+    print ('''██    ██  ██████  ██    ██     ██     ██ ██ ███    ██ ██ 
+ ██  ██  ██    ██ ██    ██     ██     ██ ██ ████   ██ ██ 
+  ████   ██    ██ ██    ██     ██  █  ██ ██ ██ ██  ██ ██ 
+   ██    ██    ██ ██    ██     ██ ███ ██ ██ ██  ██ ██    
+   ██     ██████   ██████       ███ ███  ██ ██   ████ ██ 
+                                                         ''')
+    print("your current score is... {} wins!".format(score))
     input('''Press Enter to start round {}...
-    '''.format(round))
+    '''.format(Round))
     round()
 
 def draw():
@@ -145,6 +150,10 @@ def draw():
     global Hand
     Round = Round + 1
     print("you tied at {}".format(Hand))
+    print("your current score is... {} wins!".format(score))
+    input('''press Enter to start round {}...
+    '''.format(Round))
+    round()
 
 #start screen
 print('''▀█████████▄   ▄█          ▄████████  ▄████████    ▄█   ▄█▄      ▄█    ▄████████  ▄████████    ▄█   ▄█▄ 
