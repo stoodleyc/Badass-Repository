@@ -7,7 +7,6 @@ sorry I don't recognize that answer please try again
 #functions
 #minor functions that are only functions for my covenience
 def tell_hand():
-    global Hand
     print("your hand is... {}!".format(Hand))
 
 def Continue():
@@ -39,7 +38,6 @@ def stand():
 
 def DealerHit():
     global DealerHand
-    global Stand
     DealerHand = DealerHand + randint(1,10)
     print("Dealer hits!")
     if DealerHand> 21:
@@ -53,9 +51,6 @@ def DealerHit():
             player_turn()
 
 def DealerStand():
-    global Stand
-    global Hand
-    global DealerHand
     print("The dealer is standing!")
     Continue()
     if Stand == 1:
@@ -67,7 +62,6 @@ def DealerStand():
             draw()
     else:
         player_turn()
-
 
 #the turns
 def player_turn():
@@ -90,7 +84,6 @@ def player_turn():
             player_turn()
 
 def dealer_turn():
-    global DealerHand
     print("")
     print ("dealer's turn!")
     if DealerHand < 17:
@@ -125,8 +118,6 @@ def lose():
 
 def win():
     global score
-    global Hand
-    global DealerHand
     global Round
     score = score + 1
     Round = Round + 1
@@ -139,7 +130,7 @@ def win():
    ██    ██    ██ ██    ██     ██ ███ ██ ██ ██  ██ ██    
    ██     ██████   ██████       ███ ███  ██ ██   ████ ██ 
                                                          ''')
-    print("your current score is... {} wins!".format(score))
+    print("[your current score is... {} wins!]".format(score))
     input('''Press Enter to start round {}...
     '''.format(Round))
     round()
@@ -147,10 +138,15 @@ def win():
 def draw():
     global Round
     global score
-    global Hand
     Round = Round + 1
+    print("")
+    print('''██████  ██████   █████  ██     ██ 
+██   ██ ██   ██ ██   ██ ██     ██ 
+██   ██ ██████  ███████ ██  █  ██ 
+██   ██ ██   ██ ██   ██ ██ ███ ██ 
+██████  ██   ██ ██   ██  ███ ███  ''')
     print("you tied at {}".format(Hand))
-    print("your current score is... {} wins!".format(score))
+    print("[your current score is... {} wins.]".format(score))
     input('''press Enter to start round {}...
     '''.format(Round))
     round()
