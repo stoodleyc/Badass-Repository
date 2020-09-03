@@ -111,10 +111,11 @@ def Game():
     round()
 
 def lose():
+    global hisc
     print("")
     print("your hand was {}".format(Hand))
     print("the dealers hand was {}".format(DealerHand))
-    print ("shame you lose!")
+    print ("coding this part makes me want to die")
 
 def win():
     global score
