@@ -116,6 +116,7 @@ def lose():
     print("your hand was {}".format(Hand))
     print("the dealers hand was {}".format(DealerHand))
     print ("coding this part makes me want to die")
+    hisc = open("highscore.txt", "r")
 
 def win():
     global score
@@ -163,7 +164,7 @@ print('''▀█████████▄   ▄█          ▄█████�
 ▄█████████▀  █████▄▄██   ███    █▀  ████████▀    ███   ▀█▀ █▄ ▄███   ███    █▀  ████████▀    ███   ▀█▀ 
              ▀                                   ▀         ▀▀▀▀▀▀                            ▀         
 hello there, welcome to blackjack.
-for help type help anything else will just start the game''')
+for help type help otherwise press enter start the game''')
 start=input()
 if start.lower() == "help":
     help()
