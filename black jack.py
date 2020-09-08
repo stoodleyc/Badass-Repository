@@ -19,7 +19,7 @@ def help():
     Press Enter to start...''')
     input()
 
-#the moves
+#functions for actions
 def hit():
     global Hand
     Hand = Hand + randint(1,10)
@@ -63,7 +63,7 @@ def DealerStand():
     else:
         player_turn()
 
-#the turns
+#functions for turns
 def player_turn():
     global unknown
     global Stand
@@ -91,7 +91,7 @@ def dealer_turn():
     else:
         DealerStand()
 
-#the game states
+#functions for game states
 def round():
     global DealerHand
     global Hand
@@ -115,18 +115,39 @@ def lose():
     global save
     global score
     print("")
+    print('''▓██   ██▓ ▒█████   █    ██     ██▓     ▒█████    ██████ ▓█████ 
+ ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓██▒    ▒██▒  ██▒▒██    ▒ ▓█   ▀ 
+  ▒██ ██░▒██░  ██▒▓██  ▒██░   ▒██░    ▒██░  ██▒░ ▓██▄   ▒███   
+  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ▒██░    ▒██   ██░  ▒   ██▒▒▓█  ▄ 
+  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░██████▒░ ████▓▒░▒██████▒▒░▒████▒
+   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒    ░ ▒░▓  ░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░░░ ▒░ ░
+ ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░    ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░▒  ░ ░ ░ ░  ░
+ ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░ ░   ░ ░ ░ ▒  ░  ░  ░     ░   
+ ░ ░         ░ ░     ░            ░  ░    ░ ░        ░     ░  ░
+ ░ ░                                                           ''')
     print("your hand was {}".format(Hand))
     print("the dealers hand was {}".format(DealerHand))
-    #highscore setting
+    #sets the highscore
     save = open('highscore.txt',"r")
-    hisc = (save.read())
+    hisc = int(save.read())
     save.close
     if score > hisc:
-        print ()
+        print("[NEW HIGHSCORE!]")
+        print("your score is... {}!".formatscore)
         save = open('highscore.txt', "w")
         save.write(str(score))
         save.close()
-    print(hisc)
+    else:
+        print("your score is... {}!".format(score))
+        print("your high score is... {}".format(hisc))
+    #continue
+    print("")
+    playagain = input('''press enter to play again or type exit to stop
+    ''')
+    if playagain.lower == "exit":
+        exit()
+    else:
+        Game()
 
 def win():
     global score
