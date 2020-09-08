@@ -112,16 +112,21 @@ def Game():
 
 def lose():
     global hisc
+    global save
     global score
     print("")
     print("your hand was {}".format(Hand))
     print("the dealers hand was {}".format(DealerHand))
-    #highscore things
-    hisc = open('highscore.txt',"r")
-
-    hisc = open('highscore.txt', "w")
-    hisc.write(str(score))
-    hisc.close()
+    #highscore setting
+    save = open('highscore.txt',"r")
+    hisc = (save.read())
+    save.close
+    if score > hisc:
+        print ()
+        save = open('highscore.txt', "w")
+        save.write(str(score))
+        save.close()
+    print(hisc)
 
 def win():
     global score
