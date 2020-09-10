@@ -1,8 +1,14 @@
 #thing that makes my code work
 from random import randint
+
+#variables for convenience
 unknown = ('''
 sorry I don't recognize that answer please try again
 ''')
+Hit = list(["hit","h","ht","hir","hi","hiit","hat","hitt","htt","it","more","card","gime"])
+STAND = list(["stand","s","stnd","stad","staand","sand","tand","stan","sta","std","st"])
+Help = list(["help","hilp","hlp","hip","hellp","helpp","help me","teach me","I understand nothing","tutorial"])
+Exit = list(["exit","e","end","exitt","exxit","exiit","stop","ext","exi","eit","leave"])
 
 #functions
 #minor functions that are only functions for my covenience
@@ -67,17 +73,19 @@ def DealerStand():
 def player_turn():
     global unknown
     global Stand
+    global Hit
+    global STAND
     print("")
-    if stand == 1:
+    if Stand == 1:
         stand()
     else:
         print("it is now your turn!")
         tell_hand()
         print("would you like to hit or stand?")
         playermove=input()
-        if playermove.lower() == "hit":
+        if playermove.lower() in Hit:
             hit()
-        elif playermove.lower() == "stand":
+        elif playermove.lower() in STAND:
             stand()
         else:
             print (unknown)
@@ -114,6 +122,7 @@ def lose():
     global hisc
     global save
     global score
+    global Exit
     print("")
     print('''▓██   ██▓ ▒█████   █    ██     ██▓     ▒█████    ██████ ▓█████ 
  ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓██▒    ▒██▒  ██▒▒██    ▒ ▓█   ▀ 
@@ -138,15 +147,16 @@ def lose():
         save.write(str(score))
         save.close()
     else:
-        print("your score is... {}!".format(score))
-        print("your high score is... {}".format(hisc))
+        print("[your score is {}]".format(score))
+        print("[your highscore is {}]".format(hisc))
     #continue
     print("")
-    playagain = input('''press enter to play again or type exit to stop
+    playagain=input('''press enter to play again or type exit to stop
     ''')
-    if playagain.lower == "exit":
+    if playagain.lower() in Exit:
         exit()
     else:
+        print("")
         Game()
 
 def win():
@@ -197,7 +207,7 @@ print('''▀█████████▄   ▄█          ▄█████�
 hello there, welcome to blackjack.
 for help type help otherwise press enter start the game''')
 start=input()
-if start.lower() == "help":
+if start.lower() in Help:
     help()
 
 #starting the game
