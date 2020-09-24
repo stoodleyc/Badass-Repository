@@ -20,11 +20,13 @@ def Continue():
     Press Enter to continue...''')
 
 def help():
-    print("[I can't be bothered typing an explanation right now so I'll do it later]")
+    print('''- the aim of the game is to get as high a number as possible without  passing 21
+- hit means you add to your number
+- stand means you do nothing for the rest of the round
+- you are competing against the dealer''')
     print('''
     Press Enter to start...''')
     input()
-
 #functions for actions
 def hit():
     global Hand
