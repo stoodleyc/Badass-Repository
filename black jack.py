@@ -142,7 +142,7 @@ def lose():
     save.close
     if score > hisc:
         print("[NEW HIGHSCORE!]")
-        print("your score is... {}!".formatscore)
+        print("your score is... {}!".format(score))
         save = open('highscore.txt', "w")
         save.write(str(score))
         save.close()
