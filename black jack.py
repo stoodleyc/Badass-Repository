@@ -8,7 +8,7 @@ sorry I don't recognize that answer please try again
 Hit = list(["hit","h","ht","hir","hi","hiit","hat","hitt","htt","it","more","card","gimme","hit."])
 STAND = list(["stand","s","stnd","stad","staand","sand","tand","stan","sta","std","st","stand."])
 Help = list(["help","hilp","hlp","hellp","helpp","help me","teach me","tutorial","how to play","htp","help.","h"])
-Exit = list(["exit","e","end","exitt","exxit","exiit","stop","ext","exi","eit","leave","kill","exit."])
+Exit = list(["exit","e","end","exitt","exxit","exiit","stop","ext","exi","eit","leave","kill","exit.","die"])
 
 #functions
 #minor functions that are only functions for my covenience
@@ -164,6 +164,9 @@ def lose():
 def win():
     global score
     global Round
+    global Exit
+    global save
+    global hisc
     score = score + 1
     Round = Round + 1
     print("")
@@ -176,9 +179,24 @@ def win():
    ██     ██████   ██████       ███ ███  ██ ██   ████ ██ 
                                                          ''')
     print("[your current score is... {} wins!]".format(score))
-    input('''Press Enter to start round {}...
+    nextround=input('''Press Enter to start round {} or tye exit to end the game...
     '''.format(Round))
-    round()
+    if nextround.lower() in Exit:
+        save = open('highscore.txt',"r")
+        hisc = int(save.read())
+        save.close
+        if score > hisc:
+                print("[NEW HIGHSCORE!]")
+                print("your score is... {}!".format(score))
+                save = open('highscore.txt', "w")
+                save.write(str(score))
+                save.close()
+        else:
+            print("[your score is {}]".format(score))
+            print("[your highscore is {}]".format(hisc))
+        exit()
+    else:
+        round()
 
 def draw():
     global Round
