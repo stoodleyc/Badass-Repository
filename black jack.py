@@ -7,7 +7,7 @@ sorry I don't recognize that answer please try again
 ''')
 Hit = list(["hit","h","ht","hir","hi","hiit","hat","hitt","htt","it","more","card","gimme","hit."])
 STAND = list(["stand","s","stnd","stad","staand","sand","tand","stan","sta","std","st","stand."])
-Help = list(["help","hilp","hlp","hellp","helpp","help me","teach me","tutorial","how to play","htp","help."])
+Help = list(["help","hilp","hlp","hellp","helpp","help me","teach me","tutorial","how to play","htp","help.","h"])
 Exit = list(["exit","e","end","exitt","exxit","exiit","stop","ext","exi","eit","leave","kill","exit."])
 
 #functions
