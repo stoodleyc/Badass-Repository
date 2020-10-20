@@ -179,7 +179,7 @@ def win():
    ██     ██████   ██████       ███ ███  ██ ██   ████ ██ 
                                                          ''')
     print("[your current score is... {} wins!]".format(score))
-    nextround=input('''Press Enter to start round {} or tye exit to end the game...
+    nextround=input('''Press Enter to start round {} or type exit to end the game...
     '''.format(Round))
     if nextround.lower() in Exit:
         save = open('highscore.txt',"r")
