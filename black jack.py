@@ -95,7 +95,6 @@ def player_turn():
 
 def dealer_turn():
     print("")
-    print ("dealer's turn!")
     if DealerHand < 17:
         DealerHit()
     else:
